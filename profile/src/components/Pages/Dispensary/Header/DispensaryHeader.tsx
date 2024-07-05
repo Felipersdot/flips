@@ -2,137 +2,110 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-// import { LogoHeight, colors, fontSizes, fonts } from '../../../SharedThemes';
-import { MEDIUM_DEVICE_WIDTH } from '../../../../utils/browserUtils';
 import Logo from '../../../../theme/omnibuilder-logo.png';
 
 const DispensaryHeader: React.FC = () => {
-    const intel = useIntl();
-    const location = useLocation();
+  const intl = useIntl();
+  const location = useLocation();
 
-    const isActive = (path: string) => {
-        return location.pathname === path ? 'active' : '';
-    };
+  const isActive = (path: string) => {
+    return location.pathname === path ? 'active' : '';
+  };
 
-    const navigationLinks = [
-        <LinkOption key={`dispensary`} className={`${isActive('/dispensary')}`}>
-            <NavLink to="/dispensary">{intel.formatMessage({ id: 'Dispensary.navigation.dispensary' })}</NavLink>
-        </LinkOption>,
-        <LinkOption key={`cbd101`} className={`${isActive('/cbd101')}`}>
-            <NavLink to="/cbd101">{intel.formatMessage({ id: 'Dispensary.navigation.cbd101' })}</NavLink>
-        </LinkOption>,
-        <LinkOption key={`aboutMe`} className={`${isActive('/aboutMe')}`}>
-            <NavLink to="/aboutMe">{intel.formatMessage({ id: 'Dispensary.navigation.aboutMe' })}</NavLink>
-        </LinkOption>,
-        <LinkOption key={`contact`} className={`${isActive('/contact')}`}>
-            <NavLink to="/contact">{intel.formatMessage({ id: 'Dispensary.navigation.contact' })}</NavLink>
-        </LinkOption>
-    ];
+  const navigationLinks = [
+    {
+      key: 'dispensary',
+      path: '/dispensary',
+      label: 'Dispensary.navigation.dispensary',
+    },
+    { key: 'cbd101', path: '/cbd101', label: 'Dispensary.navigation.cbd101' },
+    {
+      key: 'aboutMe',
+      path: '/aboutMe',
+      label: 'Dispensary.navigation.aboutMe',
+    },
+    {
+      key: 'contact',
+      path: '/contact',
+      label: 'Dispensary.navigation.contact',
+    },
+  ];
 
-    return (
-        <Container>
-            <LogoWrapper>{<img src={Logo} alt="Logo" />}</LogoWrapper>
-            <LinkContainer2>
-                <LinksContainer>{navigationLinks.map((c) => c)}</LinksContainer>
-            </LinkContainer2>
-        </Container>
-    );
+  return (
+    <Container>
+      <LogoWrapper>
+        <img src={Logo} alt="Logo" />
+      </LogoWrapper>
+      <LinksContainer>
+        {navigationLinks.map(({ key, path, label }) => (
+          <LinkOption key={key} className={isActive(path)}>
+            <NavLink to={path}>{intl.formatMessage({ id: label })}</NavLink>
+          </LinkOption>
+        ))}
+      </LinksContainer>
+    </Container>
+  );
 };
 
 export default DispensaryHeader;
 
 const headerHeight = 50;
-const Container = styled.header`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background: grey;
-    box-shadow: 0px 3px 4px 0px #00000024, 0px 3px 11px -2px #00000003;
 
-    height: ${headerHeight - 1}px;
-    margin-bottom: 6px;
+const Container = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: grey;
+  box-shadow: 0px 3px 4px 0px #00000024, 0px 3px 11px -2px #00000003;
+  height: ${headerHeight - 1}px;
+  margin-bottom: 6px;
+  padding: 0 20px; /* Adjust padding as needed */
 `;
 
 const LogoWrapper = styled.div`
-    width: 80%;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
+  width: auto;
+  max-width: 145px;
+  height: 45px;
+  display: flex;
+  align-items: center;
 
-    img {
-        padding-left: 12px;
-        align-self: center;
-        border: 2px solid red;
-
-        @media only screen and (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
-            height: 45px;
-        }
-    }
-`;
-
-const LinkContainer2 = styled.div`
-    display: flex;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    padding-left: 12px;
+    border: 2px solid red;
+    object-fit: contain; /* Ensures image scales correctly */
+  }
 `;
 
 const LinksContainer = styled.ul`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-    flex: 2 auto;
-    justify-content: start;
-
-    li {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        transition: color 0.15s;
-        letter-spacing: 1.28px;
-        margin-left: 40px;
-        text-align: center;
-        opacity: 1;
-
-        a {
-            color: white;
-            opacity: 0.6;
-            text-decoration: none;
-            transition: opacity 0.2s ease-in-out;
-
-            &.active,
-            :hover {
-                opacity: 1;
-            }
-
-            &.active {
-                font-weight: 500;
-            }
-        }
-
-        &.active {
-            box-shadow: inset 0 -4px 0 white;
-        }
-    }
-
-    // @media only screen and (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
-    //     display: none;
-    // }
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes links to the right */
 `;
 
-
-// const spin = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// `;
-
-
 const LinkOption = styled.li`
-    margin-right: 10px; /* Adjust the margin as needed */
+  margin-right: 20px; /* Adjust margin as needed */
+  text-decoration: none;
+  color: blue; /* Set link color */
+
+  a {
+    color: white;
+    opacity: 0.6;
     text-decoration: none;
-    color: blue; /* Set the desired link color */
+    transition: opacity 0.2s ease-in-out;
+
+    &.active,
+    :hover {
+      opacity: 1;
+    }
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+
+  &.active {
+    box-shadow: inset 0 -2px 0 white;
+  }
 `;

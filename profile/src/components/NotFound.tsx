@@ -4,11 +4,12 @@ import ErrorMessage from './ErrorMessage';
 
 const NotFound: React.FC = () => {
   const intl = useIntl();
+
   return (
-    <ErrorMessage
-      title={intl.formatMessage({ id: 'error.NotFound.title' })}
-      message={intl.formatMessage({ id: 'error.NotFound.message' })}
-    />
+      <ErrorMessage
+        title={intl.formatMessage({ id: 'error.NotFound.title' })}
+        message={intl.formatMessage({ id: 'error.NotFound.message' })}
+      />
   );
 };
 

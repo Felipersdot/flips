@@ -3,39 +3,31 @@ import React, { Suspense } from 'react';
 import { useIntl } from 'react-intl';
 import { useStores } from '../../../hooks/useStores';
 import DispensaryLayout from './DispensaryLayout';
-import { Routes } from 'react-router-dom';
 import ChangeAnswerSpinner from 'components/UI/ChangeAnswerSpinner';
 import { MEDIUM_DEVICE_WIDTH } from 'utils/browserUtils';
 import { createGlobalStyle } from 'styled-components';
 import NotificationProvider from 'components/Notification/NotificationProvider';
 
 const DispensaryRoutesPageLayout = ({ children }) => {
-    const { appStore } = useStores();
-    const { formatMessage: f } = useIntl();
-    const { themeStore } = useStores();
+  const { appStore } = useStores();
+  const { formatMessage: f } = useIntl();
+  const { themeStore } = useStores();
 
+  React.useEffect(() => {
+    appStore.setPageTitle2(f({ id: 'MyHomes.PageTitle' }));
+  }, [appStore, f]);
 
-    React.useEffect(() => {
-        appStore.setPageTitle2(f({ id: 'MyHomes.PageTitle' }));
-    }, [appStore, f]);
-
-
-    return( 
+  return (
     <NotificationProvider>
+      <GlobalStyle theme={themeStore.theme} />
+      <Suspense fallback={<ChangeAnswerSpinner isVisible />}>
+        <DispensaryLayout>{children}</DispensaryLayout>
+      </Suspense>
+    </NotificationProvider>
+  );
+};
 
-        <GlobalStyle theme={themeStore.theme} />
-        <Suspense fallback={<ChangeAnswerSpinner isVisible />}>
-        <DispensaryLayout>
-            <Routes>{children}</Routes>
-        </DispensaryLayout> 
-        </Suspense> 
-        </NotificationProvider>
-
-
-        )};
-
-        export default observer(DispensaryRoutesPageLayout);
-
+export default observer(DispensaryRoutesPageLayout);
 
 const GlobalStyle = createGlobalStyle<{ theme: any }>`
 * {

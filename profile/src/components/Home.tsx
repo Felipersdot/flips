@@ -6,7 +6,6 @@ import { useQuery } from '../hooks/useQuery';
 // import HomeConfigurator from './configurator/HomeConfigurator';
 // import Loader from './Loader';
 // import NotFound from './NotFound';
-import MainPage from './NavigationBar';
 
 const Home: React.FC = () => {
   const query = useQuery();
@@ -60,19 +59,7 @@ const Home: React.FC = () => {
     // eslint-disable-next-line
   }, [templateId, exlineId, exquoteId]);
 
-  return <MainPage />;
-
-  // // this is where the not found message is coming from
-  // if ((templateId == null && (exlineId == null || exquoteId == null) && alternativeId == null) || !AreGuidsValid)
-  //     return <MainPage />;
-
-  // if (true) return <Loader />;
-
-  // // if (alternative) return <HomeConfigurator alternative={alternative} clientId={clientId} />;
-
-  // if (true) return <NotFound />;
-
-  // return <AlternativeList />;
+  return <></>;
 };
 
 export default observer(Home);
