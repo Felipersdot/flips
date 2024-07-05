@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import thirdParty from '../../api/thirdParty';
+import thirdParty from '../../../api/thirdParty';
 
 const Dispensary = () => {
     const [helper, setHelper] = useState<string[]>([]);
@@ -16,7 +16,6 @@ const Dispensary = () => {
     };
 
     useEffect(() => {
-        console.log('hello there');
         const helpMe = async () => {
             await getPokemonList();
         };

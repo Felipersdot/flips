@@ -1,11 +1,11 @@
 import React from 'react';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
-import { useStores } from '../../hooks/useStores';
+import { useStores } from '../../../hooks/useStores';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Button } from '../UI/Button.styled';
-import omniBuilderApi from '../../api/omniBuilderApi';
-import TextFormField from '../FormFields/TextFormField';
+import { Button } from '../../UI/Button.styled';
+import omniBuilderApi from '../../../api/omniBuilderApi';
+import TextFormField from '../../FormFields/TextFormField';
 
 const validationSchema = yup.object({
     email: yup.string().email().required(),

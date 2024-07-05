@@ -9,66 +9,70 @@ import { useQuery } from '../hooks/useQuery';
 import MainPage from './NavigationBar';
 
 const Home: React.FC = () => {
-    const query = useQuery();
-    const templateId = query.get('templateId');
-    const clientId = query.get('clientId');
-    const exlineId = query.get('exlineId');
-    const exquoteId = query.get('exquoteId');
-    const alternativeId = query.get('alternativeId');
+  const query = useQuery();
+  const templateId = query.get('templateId');
+  const clientId = query.get('clientId');
+  const exlineId = query.get('exlineId');
+  const exquoteId = query.get('exquoteId');
+  const alternativeId = query.get('alternativeId');
 
-    // const { appStore } = useStores();
-    // const { template, alternative } = templateStore;
+  // const { appStore } = useStores();
+  // const { template, alternative } = templateStore;
 
-    const CheckGuids = () => {
-        const guidPattern = /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
+  const CheckGuids = () => {
+    const guidPattern = /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
 
-        const idsToCheck = [templateId, clientId, exlineId, exquoteId, alternativeId];
+    const idsToCheck = [
+      templateId,
+      clientId,
+      exlineId,
+      exquoteId,
+      alternativeId,
+    ];
 
-        for (const id of idsToCheck) {
-            if (id && !guidPattern.test(id)) {
-                console.log('One of your guids is entered incorrectly');
-                return false;
-            }
-        }
+    for (const id of idsToCheck) {
+      if (id && !guidPattern.test(id)) {
+        console.log('One of your guids is entered incorrectly');
+        return false;
+      }
+    }
 
-        return true;
+    return true;
+  };
+
+  const AreGuidsValid = CheckGuids();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!AreGuidsValid) {
+        return;
+      }
+      if (exlineId != null && exquoteId != null) {
+        // await templateStore.fetchAlternativeByLineIdAndQuoteId(exlineId, exquoteId, alternativeId);
+      } else if (alternativeId) {
+        // await templateStore.fetchAlternativeById(alternativeId);
+      } else if (templateId) {
+        // await templateStore.fetchTemplate(templateId, query);
+      }
+      // appStore.setPendoDataReady(true);
     };
+    fetchData();
+    // eslint-disable-next-line
+  }, [templateId, exlineId, exquoteId]);
 
-    const AreGuidsValid = CheckGuids();
+  return <MainPage />;
 
-    
+  // // this is where the not found message is coming from
+  // if ((templateId == null && (exlineId == null || exquoteId == null) && alternativeId == null) || !AreGuidsValid)
+  //     return <MainPage />;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            if (!AreGuidsValid) {
-                return;
-            }
-            if (exlineId != null && exquoteId != null) {
-                // await templateStore.fetchAlternativeByLineIdAndQuoteId(exlineId, exquoteId, alternativeId);
-            } else if (alternativeId) {
-                // await templateStore.fetchAlternativeById(alternativeId);
-            } else if (templateId) {
-                // await templateStore.fetchTemplate(templateId, query);
-            }
-            // appStore.setPendoDataReady(true);
-        };
-        fetchData();
-        // eslint-disable-next-line
-    }, [templateId, exlineId, exquoteId]);
+  // if (true) return <Loader />;
 
-    return <MainPage />;
+  // // if (alternative) return <HomeConfigurator alternative={alternative} clientId={clientId} />;
 
-    // // this is where the not found message is coming from
-    // if ((templateId == null && (exlineId == null || exquoteId == null) && alternativeId == null) || !AreGuidsValid)
-    //     return <MainPage />;
+  // if (true) return <NotFound />;
 
-    // if (true) return <Loader />;
-
-    // // if (alternative) return <HomeConfigurator alternative={alternative} clientId={clientId} />;
-
-    // if (true) return <NotFound />;
-
-    // return <AlternativeList />;
+  // return <AlternativeList />;
 };
 
 export default observer(Home);

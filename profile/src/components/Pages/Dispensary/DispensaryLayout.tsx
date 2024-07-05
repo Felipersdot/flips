@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MEDIUM_DEVICE_WIDTH } from '../../utils/browserUtils';
+import { MEDIUM_DEVICE_WIDTH } from '../../../utils/browserUtils';
 import DispensaryHeader from './Header/DispensaryHeader';
 
 const DispensaryLayout = ({ children }) => {

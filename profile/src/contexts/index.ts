@@ -14,16 +14,16 @@ import { AppStore } from '../stores/AppStore';
 // import { BuilderStore } from '../stores/BuilderStore';
 
 export const storesContext = React.createContext({
-    authStore: new AuthStore(),
-    appStore: new AppStore(),
-    // projectStore: new ProjectStore(),
-    // alternativeStore: new AlternativeStore(),
-    // pannellumStore: new PannellumStore(),
-    // buildingModelStore: new BuildingModelStore(),
-    // assetStore: new AssetStore(),
-    userStore: new UserStore(),
-    intlStore: new IntlStore(),
-    themeStore: new ThemeStore()
-    // blenderStore: new BlenderStore(),
-    // builderStore: new BuilderStore(),
+  authStore: new AuthStore(),
+  appStore: new AppStore(),
+  // projectStore: new ProjectStore(),
+  // alternativeStore: new AlternativeStore(),
+  // pannellumStore: new PannellumStore(),
+  // buildingModelStore: new BuildingModelStore(),
+  // assetStore: new AssetStore(),
+  userStore: new UserStore(),
+  intlStore: new IntlStore(),
+  themeStore: new ThemeStore(),
+  // blenderStore: new BlenderStore(),
+  // builderStore: new BuilderStore(),
 });

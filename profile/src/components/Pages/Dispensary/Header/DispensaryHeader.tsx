@@ -3,8 +3,8 @@ import { useIntl } from 'react-intl';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 // import { LogoHeight, colors, fontSizes, fonts } from '../../../SharedThemes';
-import { MEDIUM_DEVICE_WIDTH } from '../../../utils/browserUtils';
-import Logo from '../../../theme/omnibuilder-logo.png';
+import { MEDIUM_DEVICE_WIDTH } from '../../../../utils/browserUtils';
+import Logo from '../../../../theme/omnibuilder-logo.png';
 
 const DispensaryHeader: React.FC = () => {
     const intel = useIntl();
