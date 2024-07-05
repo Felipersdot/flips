@@ -1,28 +1,37 @@
 const webpack = require('webpack');
+
 module.exports = function override(config) {
-    const fallback = config.resolve.fallback || {};
-    Object.assign(fallback, {
-        "crypto": require.resolve("crypto-browserify"),
-        "stream": require.resolve("stream-browserify"),
-        "assert": require.resolve("assert"),
-        "http": require.resolve("stream-http"),
-        "https": require.resolve("https-browserify"),
-        "os": require.resolve("os-browserify"),
-        "url": require.resolve("url"),
-        "zlib": require.resolve("browserify-zlib")
-    })
-    config.resolve.fallback = fallback;
+    // Update resolve alias or modules as necessary
+    config.resolve = {
+        ...config.resolve,
+        alias: {
+            ...config.resolve.alias,
+            // Add aliases if needed
+        },
+        modules: [
+            ...(config.resolve.modules || []),
+            // Add additional module paths if needed
+        ],
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'], // Example of setting extensions
+        plugins: [
+            ...(config.resolve.plugins || []),
+            // Add any additional plugins if necessary
+        ],
+        fallback: {
+            ...config.resolve.fallback,
+            "stream": require.resolve("stream-browserify"), // Fallback for 'stream'
+            "crypto": require.resolve("crypto-browserify"),  // Fallback for 'crypto'
+            "vm": require.resolve("vm-browserify")
+
+        }
+    };
+
+    // Update plugins to provide global modules
     config.plugins = (config.plugins || []).concat([
         new webpack.ProvidePlugin({
             process: 'process/browser',
             Buffer: ['buffer', 'Buffer']
         })
-    ])
-    config.module.rules.push({
-        test: /\.m?js/,
-        resolve: {
-            fullySpecified: false
-        }
-    })
+    ]);
     return config;
-}
+};

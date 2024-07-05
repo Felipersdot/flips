@@ -66,6 +66,7 @@ const roles = {
     }
 }
 
+// eslint-disable-next-line
 export default {
     auth,
     username,
