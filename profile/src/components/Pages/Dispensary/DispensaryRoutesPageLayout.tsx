@@ -24,51 +24,52 @@ export default observer(DispensaryRoutesPageLayout);
 
 const GlobalStyle = createGlobalStyle<{ theme: any }>`
 * {
-     padding: 0;
-     width: 100%;
-     margin: 0;
-     box-sizing: border-box;
-     -webkit-tap-highlight-color: transparent;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #979797;
 
-     :not(input):not(textarea) {
-         @media (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
-             -webkit-touch-callout: none; /* iOS Safari */
-             -webkit-user-select: none; /* Safari */
-         }
-     }
- }
+    :not(input):not(textarea) {
+        @media (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+        }
+    }
+}
 
- ::before, ::after {
-     box-sizing: inherit;
- }
+::before, ::after {
+    box-sizing: inherit;
+}
 
- html, body {
-     font-family: Montserrat;
-     width: 100%;
-     height: 100%;
+html, body {
+    font-family: Montserrat;
+    width: 100%;
+    height: 100%;
 
-     @media only screen and (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
-         overflow-x: hidden;
-         position: relative;
-         overscroll-behavior: none;
-     }
- }
+    @media only screen and (max-width: ${MEDIUM_DEVICE_WIDTH}px) {
+        overflow-x: hidden;
+        position: relative;
+        overscroll-behavior: none;
+    }
+}
 
- h2 {
-     font-family: Arial, sans-serif;
-     font-weight: normal;
-     font-size: 1.5rem; /* Adjust to your desired default font size */
-     font-style: normal;
- }
+h2 {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem; /* Adjust to your desired default font size */
+    font-style: normal;
+}
 
- ::-webkit-scrollbar {
-     width: 8px;
-     height: 8px;
-     background: inherit;
- }
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: inherit;
+}
 
- ::-webkit-scrollbar-thumb {
-     background: #cccccc;
-     border-radius: 3px;
- }
+::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 3px;
+}
 `;

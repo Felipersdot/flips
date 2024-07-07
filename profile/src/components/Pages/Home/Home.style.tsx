@@ -16,9 +16,11 @@ export const EducationContainer = styled.div`
   margin: 10px 0px 50px 5px;
 `;
 
-export const CoursesContainer = styled.div``;
+export const CoursesContainer = styled.div`
+  color: white;
+`;
 
-export const Course= styled.div`
+export const Course = styled.div`
   border: 2px solid black;
   margin-bottom: 25px;
   padding: 5px;

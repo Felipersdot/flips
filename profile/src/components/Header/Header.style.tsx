@@ -7,7 +7,7 @@ export const Container = styled.header`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background: grey;
+  background: #191919;
   box-shadow: 0px 3px 4px 0px #00000024, 0px 3px 11px -2px #00000003;
 
   height: ${headerHeight - 1}px;
@@ -34,6 +34,7 @@ export const LinksContainer = styled.ul`
   margin-right: 1rem;
   flex: 7 auto; /* Takes 70% of the header */
   justify-content: flex-start; /* Align links to the left */
+  background: #191919;
 
   li {
     height: 100%;
@@ -45,15 +46,19 @@ export const LinksContainer = styled.ul`
     margin-left: 40px;
     text-align: center;
     opacity: 1;
+    background: #191919;
 
     a {
-      color: white;
+      background: #191919;
+
+      color: pink;
       opacity: 0.6;
       text-decoration: none;
       transition: opacity 0.2s ease-in-out;
 
       &.active,
       :hover {
+        color: lightblue;
         opacity: 1;
       }
 

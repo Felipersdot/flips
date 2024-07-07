@@ -4,10 +4,10 @@ import { getImageUrl } from '../utils/ImageUtils';
 
 export const DEFAULT_THEME = {
   colors: {
-    primary: '#1565c0',
+    primary: '#191919',
     secondary: '#2ecc71',
     text: '#333',
-    background: '#1565c0',
+    background: '#191919',
   },
   typography: {
     fontFamily: 'Arial, sans-serif',
