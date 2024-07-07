@@ -5,7 +5,7 @@ import { useStores } from '../../hooks/useStores';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '../UI/Button.styled';
 import omniBuilderApi from '../../api/omniBuilderApi';
-import TextFormField from '../FormFields/TextFormField';
+import TextFormField from 'components/UI/FormFields/TextFormField';
 
 const validationSchema = yup.object({
     email: yup.string().email().required(),

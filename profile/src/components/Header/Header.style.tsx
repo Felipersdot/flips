@@ -12,6 +12,9 @@ export const Container = styled.header`
 
   height: ${headerHeight - 1}px;
   margin-bottom: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top of other content */
 
   img {
     max-width: 145px;

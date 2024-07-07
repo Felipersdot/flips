@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from "styled-components";
-import SelectFormField from "../FormFields/SelectFormField";
+import SelectFormField from "./FormFields/SelectFormField";
 
 type InlineDropdownProps = {
     options: { label: string; value: string }[];
