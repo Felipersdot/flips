@@ -12,6 +12,30 @@ import {
   OperatingSystemsSkillSet,
   ProgrammingSkillSet,
 } from 'models/HomePage/Skills';
+import {
+  JavaOOPStudyResources,
+  OperatingSystemsStudyResources,
+  ProgrammingStudyResources,
+} from 'models/HomePage/Resources';
+import { useIntl } from 'react-intl';
+
+const AboutMe = (): React.JSX.Element => {
+  const { formatMessage: f } = useIntl();
+  return (
+    <AboutMeContainer>
+      <p>
+        {f({ id: 'MainPage.aboutMe' })}
+        <em>Education:</em> <br />
+        <li>{f({ id: 'MainPage.education' })}</li>
+        <li>{f({ id: 'MainPage.certification1' })}</li>
+      </p>
+      <div id="Slider_Container">
+        <div className="slider"></div>
+        <div id="cuties"></div>
+      </div>
+    </AboutMeContainer>
+  );
+};
 
 const Home = () => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
@@ -35,30 +59,29 @@ const Home = () => {
     );
   }
 
+  const renderResources = (
+    resources: Record<string, { url: string; label: string }>
+  ) => {
+    return (
+      <div>
+        {Object.values(resources).map((resource, index) => (
+          <li>
+            <a href={resource.url} key={index}>
+              {resource.label}
+            </a>
+          </li>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div>
-      <AboutMeContainer>
-        <p>
-          I am a full stack developer, aspiring to make meaningful impacts by
-          continuously integrating new findings and studies into current
-          practices. I carry a keen interest for the optimization and
-          enhancement of current infrastructure by analyzing its fundamentals
-          and assessing areas of interest to increase productivity, reduce
-          latency, and enhance user experience. I continuously maintain my
-          skills by contributing to the APIs of open source projects, reviewing
-          documentation, correlating their objectives with the program's ability
-          to perform, and assessing the performance metrics to isolate areas of
-          possible improvements.
-          <br />
-          <em>Education:</em> <br />
-          - Texas State University, 2015-2021, Bachelors of Arts in Computer
-          Science, San Marcos, TX. <br />- Google Data Analytics Certification
-        </p>
-        <div id="Slider_Container">
-          <div className="slider"></div>
-          <div id="cuties"></div>
-        </div>
-      </AboutMeContainer>
+      <AboutMe />
+      <div id="Slider_Container">
+        <div className="slider"></div>
+        <div id="cuties"></div>
+      </div>
 
       <EducationContainer>
         <SchoolName id="TXST">TEXAS STATE UNIVERSITY</SchoolName>
@@ -99,17 +122,7 @@ const Home = () => {
                 sets for general users and developers respectively.
               </p>
               {renderSkillSet(OOPConcepts)}
-              <p className="Resources">
-                <a href="https://www.amazon.com/Object-Oriented-Programming-Java-Applications/dp/0070678839/ref=asc_df_0070678839/?tag=hyprod-20&linkCode=df0&hvadid=564700895175&hvpos=&hvnetw=g&hvrand=5260419965788948622&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9028305&hvtargid=pla-1652091875022&psc=1">
-                  Object Oriented Programming with Java: Essentials and
-                  Applications : by Dr. Rajkumar Buyya (Author), Dr. S. Thamarai
-                  Selvi (Contributor), Mr. Xingchen Chu (Contributor)
-                </a>
-                <a href="https://www.codecademy.com/learn/learn-java/modules/learn-java-object-oriented-java-u">
-                  Code Academy
-                </a>{' '}
-                <br />
-              </p>
+              {renderResources(JavaOOPStudyResources)}
             </div>
           </CourseContainer>
           <CourseContainer className={openIndexes.includes(1) ? 'open' : ''}>
@@ -146,20 +159,7 @@ const Home = () => {
                 the data.
               </p>
               {renderSkillSet(ProgrammingSkillSet)}
-              <p className="Resources">
-                <a href="https://www.amazon.com/Database-Processing-Fundamentals-Design-Implementation/dp/0134802748/ref=sr_1_1?crid=1WJ3Z1PPVB117&keywords=DATABASE+PROCESSING+FUNDAMENTALS%2C+DESIGN%2C+AND+IMPLEMENTATION&qid=1651528749&sprefix=database+processing+fundamentals%2C+design%2C+and+implementation%2Caps%2C111&sr=8-1">
-                  Database Processing: Fundamentals, Design, and Implementation
-                  15th Edition
-                </a>{' '}
-                <br />
-                <a href="https://grow.google/certificates/data-analytics/#?modal_active=none">
-                  Google Data Analytics Certification
-                </a>{' '}
-                <br />
-                <a href="https://www.w3schools.com/sql/default.asp">
-                  W3Schools for SQL and PHP
-                </a>
-              </p>
+              {renderResources(ProgrammingStudyResources)}
             </div>
           </CourseContainer>
           <CourseContainer
@@ -191,17 +191,7 @@ const Home = () => {
                 sections of code from 'real' operating systems.
               </p>
               {renderSkillSet(OperatingSystemsSkillSet)}
-              <p className="Resources">
-                <a href="https://www.amazon.com/Operating-System-Concepts-Abraham-Silberschatz/dp/1119800366/ref=sr_1_1_sspa?crid=1X8LMZZ96Q6O8&keywords=operating+systems+concepts&qid=1651529297&sprefix=operating+systems+concepts%2Caps%2C118&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFDMUIySzFEQlUzQTkmZW5jcnlwdGVkSWQ9QTA0NzAyNzUyUVY5MFJHNk5QSUomZW5jcnlwdGVkQWRJZD1BMDU4NDQwNDA3MkxVODRaVUROVTQmd2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl">
-                  Operating System Concepts 10th Edition by Abraham
-                  Silberschatz, Greg Gagne, Peter B. Galvin
-                </a>{' '}
-                <br />
-                <a href="https://www.tutorialspoint.com/operating_system/index.htm">
-                  TutorialsPoint for OS
-                </a>{' '}
-                <br />
-              </p>
+              {renderResources(OperatingSystemsStudyResources)}
             </div>
           </CourseContainer>
         </RelativeCourses>

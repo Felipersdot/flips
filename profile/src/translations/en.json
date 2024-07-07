@@ -5,5 +5,8 @@
   "Navigation.newsFeed": "News Feed",
   "Navigation.endeavors": "Endeavors",
   "Navigation.projects": "Projects",
-  "Navigation.references": "References"
+  "Navigation.references": "References",
+  "MainPage.aboutMe": "I am a full stack developer, aspiring to make meaningful impacts by continuously integrating new findings and studies into current practices. I carry a keen interest for the optimization and enhancement of current infrastructure by analyzing its fundamentals and assessing areas of interest to increase productivity, reduce latency, and enhance user experience. I continuously maintain my skills by contributing to the APIs of open source projects, reviewing documentation, correlating their objectives with the program's ability to perform, and assessing the performance metrics to isolate areas of possible improvements.",
+  "MainPage.education": "Texas State University, 2015-2021, Bachelors of Arts in Computer Science, San Marcos, TX. ",
+  "MainPage.certification1": "Google Data Analytics Certification"
 }
