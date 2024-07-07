@@ -2,41 +2,23 @@ import React, { useEffect, useState } from 'react';
 import thirdParty from '../../../api/thirdParty';
 
 const Dispensary = () => {
-    const [helper, setHelper] = useState<string[]>([]);
+  const [pokemonList, setPokemonList] = useState<string[]>([]);
 
-    const getPokemonList = async () => {
-        try {
-            const response = (await thirdParty.pokemon.getList()).data.results;
-            setHelper(response);
-            console.log(response);
-        } catch (e) {
-            console.error(e);
-        } finally {
-        }
+  useEffect(() => {
+    const fetchPokemonList = async () => {
+      const response = (await thirdParty.pokemon.getList()).data.results;
+      setPokemonList(response);
     };
+    fetchPokemonList();
+  }, []);
 
-    useEffect(() => {
-        const helpMe = async () => {
-            await getPokemonList();
-        };
-        helpMe();
-    }, [helper]);
-
-    return (
-        <>
-            <div>
-                {helper.map((c: any) => {
-                    return (
-                        <>
-                            {c.name}
-                            <br />
-                        </>
-                    );
-                })}
-            </div>
-            indeed we are the gods of the new worlds
-        </>
-    );
+  return (
+    <div>
+      {pokemonList.map((c: any, key) => {
+        return <div key={key}>{c.name}</div>;
+      })}
+    </div>
+  );
 };
 
 export default Dispensary;

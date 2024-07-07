@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import React, { Suspense } from 'react';
-import { useIntl } from 'react-intl';
 import { useStores } from '../../../hooks/useStores';
 import DispensaryLayout from './DispensaryLayout';
 import ChangeAnswerSpinner from 'components/UI/ChangeAnswerSpinner';
@@ -9,13 +8,7 @@ import { createGlobalStyle } from 'styled-components';
 import NotificationProvider from 'components/Notification/NotificationProvider';
 
 const DispensaryRoutesPageLayout = ({ children }) => {
-  const { appStore } = useStores();
-  const { formatMessage: f } = useIntl();
   const { themeStore } = useStores();
-
-  React.useEffect(() => {
-    appStore.setPageTitle2(f({ id: 'MyHomes.PageTitle' }));
-  }, [appStore, f]);
 
   return (
     <NotificationProvider>

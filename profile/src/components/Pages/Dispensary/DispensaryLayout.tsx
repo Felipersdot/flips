@@ -1,5 +1,5 @@
 import React from 'react';
-import DispensaryHeader from './Header/DispensaryHeader';
+import DispensaryHeader from '../../Header/Header';
 
 const DispensaryLayout = ({ children }) => {
   return (
