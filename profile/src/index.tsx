@@ -13,11 +13,12 @@ import ChangeAnswerSpinner from 'components/UI/ChangeAnswerSpinner';
 
 const App = () => {
   const { themeStore, intlStore } = useStores();
-  const Home = lazy(() => import('./components/Home'));
+  const Home = lazy(() => import('./components/Pages/Home/Home'));
   const NotFound = lazy(() => import('./components/NotFound'));
   const Dispensary = lazy(
     () => import('./components/Pages/Dispensary/Dispensary')
   );
+  
   return (
     <IntlProvider
       locale={intlStore.locale}
@@ -27,41 +28,66 @@ const App = () => {
       <ThemeProvider theme={DEFAULT_THEME}>
         {themeStore.isLoadingTheme && <Loader />}
         <Suspense fallback={<ChangeAnswerSpinner isVisible />}>
-          <Routes>
-            <Route
-              path="/dispensary"
-              element={
-                <DispensaryRoutesPageLayout>
-                  <Dispensary />
-                </DispensaryRoutesPageLayout>
-              }
-            />
-            <Route
-              path="/cbd101"
-              element={
-                <DispensaryRoutesPageLayout>
-                  <Home />
-                </DispensaryRoutesPageLayout>
-              }
-            />
-            <Route
-              path="/aboutme"
-              element={
-                <DispensaryRoutesPageLayout>
-                  <Dispensary />
-                </DispensaryRoutesPageLayout>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <DispensaryRoutesPageLayout>
-                  <Home />
-                </DispensaryRoutesPageLayout>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <Routes>
+  <Route
+    path="/home"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Home />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/contact"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/investments"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/newsFeed"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/endeavors"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/projects"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route
+    path="/references"
+    element={
+      <DispensaryRoutesPageLayout>
+        <Dispensary />
+      </DispensaryRoutesPageLayout>
+    }
+  />
+  <Route path="*" element={<NotFound />} />
+</Routes>
+
         </Suspense>
       </ThemeProvider>
     </IntlProvider>
