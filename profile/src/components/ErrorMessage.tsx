@@ -1,7 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';
-import { useStores } from '../hooks/useStores';
 interface Props {
   error?: string;
   title?: string;
@@ -10,7 +9,6 @@ interface Props {
 
 const ErrorMessage: React.FC<Props> = ({ error, title, message }) => {
   const { formatMessage: f } = useIntl();
-  const { authStore } = useStores();
 
   if (error) {
     if (error === 'Configurator session not found.') {
