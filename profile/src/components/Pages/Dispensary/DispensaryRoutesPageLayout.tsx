@@ -15,7 +15,7 @@ const DispensaryRoutesPageLayout = ({ children }) => {
       <GlobalStyle theme={themeStore.theme} />
       <Suspense fallback={<ChangeAnswerSpinner isVisible />}>
         <DispensaryLayout>{children}</DispensaryLayout>
-      </Suspense>
+      </Suspense> 
     </NotificationProvider>
   );
 };
