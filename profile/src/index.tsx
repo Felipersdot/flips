@@ -16,7 +16,7 @@ const App = () => {
   const Home = lazy(() => import('./components/Pages/Home/Home'));
   const Contact = lazy(() => import('./components/Pages/Contact/Contact'));
 
-  const NotFound = lazy(() => import('./components/NotFound'));
+  //const NotFound = lazy(() => import('./components/NotFound'));
   const Dispensary = lazy(
     () => import('./components/Pages/Dispensary/Dispensary')
   );
@@ -87,7 +87,14 @@ const App = () => {
                 </DispensaryRoutesPageLayout>
               }
             />
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={
+                <DispensaryRoutesPageLayout>
+                  <Home />
+                </DispensaryRoutesPageLayout>
+              }
+            />
           </Routes>
         </Suspense>
       </ThemeProvider>
